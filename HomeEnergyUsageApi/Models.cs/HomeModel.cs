@@ -1,0 +1,1 @@
+public record Home(string ownerLastName, string streetAddress, string city, int monthlyElectricUsage);
