@@ -9,7 +9,7 @@ namespace HomeEnergyUsageApi.Controllers
         private static List<Home> homes = new List<Home>() {
             new Home("Kim", "204 Maple Hill Road", "Atlanta", 4923),
             new Home("Garcia", "West 7th Street", "Tuscon", 3521),
-            new Home("O'Connor", "332 Birchwood Circle", "Miami", 2576)};
+            new Home("Connor", "332 Birchwood Circle", "Miami", 2576)};
 
         private Home notFound = new Home("Nobody", "000 Nowhere Ave", "No Owner Was Found", 0);
 
