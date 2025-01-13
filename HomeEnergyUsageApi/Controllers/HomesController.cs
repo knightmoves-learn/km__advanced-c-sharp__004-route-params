@@ -19,6 +19,21 @@ namespace HomeEnergyUsageApi.Controllers
             return homes;
         }
 
+        //start
+        [HttpGet("{ownerLastName}")]
+        public Home Get(string ownerLastName)
+        {
+            foreach (Home home in homes)
+            {
+                if (home.ownerLastName == ownerLastName)
+                {
+                    return home;
+                }
+            }
+            return notFound;
+        }
+        //end
+
         [HttpPost]
         public Home Post([FromBody] Home home)
         {
