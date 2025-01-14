@@ -15,7 +15,9 @@ In `HomeEnergyUsageApi/Controllers/HomesController.cs`...
   - This method should return a specific `Home` from the existing list `homes`.
   - The `Home` being returned, should be the `Home` in `homes` whose `ownerLastName` property is the same as the route parameter being passed in to your new GET method.
   - If no `ownerLastName`s in `homes` match the passed route paramter, the method should return the existing `Home notFound`.
-- Any existing methods or properties on `HomesController.cs` should NOT be changed
+- Any existing methods or properties on `HomesController.cs` should NOT be changed.
+- All methods should use the base route `/Homes`.
+
 
 Additional Information:
 
