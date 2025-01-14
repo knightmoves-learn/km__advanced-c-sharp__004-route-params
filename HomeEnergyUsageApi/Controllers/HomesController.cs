@@ -20,7 +20,7 @@ namespace HomeEnergyUsageApi.Controllers
         }
 
         [HttpGet("{ownerLastName}")]
-        public IEnumerable<Home> FindByLastName(string ownerLastName)
+        public object FindByLastName(string ownerLastName)
         {
             var homeFound = false;
             foreach (var home in homes)
@@ -28,12 +28,12 @@ namespace HomeEnergyUsageApi.Controllers
                 if(home.ownerLastName.Equals(ownerLastName))
                 {
                     homeFound = true;
-                    return homes;
+                    return home;
                 }
             }
             if(homeFound == false)
             {
-                return (IEnumerable<Home>) notFound;
+                return notFound;
             }
             else return null;
         }
