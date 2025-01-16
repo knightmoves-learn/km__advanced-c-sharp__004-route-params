@@ -12,9 +12,10 @@ In `HomeEnergyUsageApi/Controllers/HomesController.cs`...
 
 - Create a second HTTP GET method
   - This method should take one route parameter, off of the initial route `/Homes`
-  - This method should return a specific `Home` from the existing list `homes`.
-  - The `Home` being returned, should be the `Home` in `homes` whose `ownerLastName` property is the same as the route parameter being passed in to your new GET method.
-  - If no `ownerLastName`s in `homes` match the passed route paramter, the method should return the existing `Home notFound`.
+  - This method should return a specific `Home` from the existing list `homesList`.
+  - The `Home` being returned, should be the `Home` in `homesList` whose `ownerLastName` property is the same as the route parameter being passed in to your new GET method.
+  - If no `ownerLastName`s in `homesList` match the passed route paramter, the method should return null.
+      - This will throw a warning, this is OK for now. It should not stop your API from running.
 - Any existing methods or properties on `HomesController.cs` should NOT be changed
 
 Additional Information:

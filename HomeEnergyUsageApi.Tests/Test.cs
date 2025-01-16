@@ -43,7 +43,7 @@ public class Test
 
         var response = await client.GetAsync(url + $"/{testHomes[0].ownerLastName}");
         string responseContent = await response.Content.ReadAsStringAsync();
-        
+
         string firstTestHome = JsonSerializer.Serialize(testHomes[0]);
         bool homeRecordMatches = (responseContent == firstTestHome);
 
@@ -59,7 +59,7 @@ public class Test
 
         var response = await client.GetAsync(url + $"/{testHomes[1].ownerLastName}");
         string responseContent = await response.Content.ReadAsStringAsync();
-        
+
         string secondTestHome = JsonSerializer.Serialize(testHomes[1]);
         bool homeRecordMatches = (responseContent == secondTestHome);
 
@@ -75,7 +75,7 @@ public class Test
 
         var response = await client.GetAsync(url + $"/{testHomes[2].ownerLastName}");
         string responseContent = await response.Content.ReadAsStringAsync();
-        
+
         string thirdTestHome = JsonSerializer.Serialize(testHomes[2]);
         bool homeRecordMatches = (responseContent == thirdTestHome);
 
@@ -85,16 +85,12 @@ public class Test
 
     [Theory]
     [InlineData("/Homes/DoesntExist")]
-    public async Task HomeEnergyUsageApiGivesExpectedResponseWhenCantFindHomeByOwnerLastNameRouterParam(string url)
+    public async Task HomeEnergyUsageApiGivesNoContentHTTPResponseWhenCantFindHomeByOwnerLastNameRouterParam(string url)
     {
         var client = _factory.CreateClient();
 
         var response = await client.GetAsync(url);
-        string responseContent = await response.Content.ReadAsStringAsync();
-        
-        bool homeRecordMatches = (responseContent == expectedNotFound);
 
-        Assert.True(response.IsSuccessStatusCode, $"HomeEnergyUsageApi did not return successful HTTP Response Code on GET request at {url}; instead received {(int)response.StatusCode}: {response.StatusCode}");
-        Assert.True(homeRecordMatches, $"HomeEnergyUsageApi did not return the correct \"No Owner Was Found\" record when trying to GET by Owner's Last Name Route Parameter with an owner who doesn't exist \n Expected:{expectedNotFound} \n Received:{responseContent}");
+        Assert.True((int)response.StatusCode == 204, $"HomeEnergyApi did not return HTTP Response \"204: NoContent\" on PUT request at {url}; instead received {(int)response.StatusCode}: {response.StatusCode}");
     }
 }
