@@ -19,11 +19,11 @@ namespace HomeEnergyUsageApi.Controllers
 
         [HttpGet("{ownerLastName}")]
 
-        public Home FindByLastName(string lastNameParam)
+        public Home FindByLastName(string ownerLastName)
         {
             foreach (var home in homesList)
             {
-                if (home.ownerLastName.Equals(lastNameParam))
+                if (home.ownerLastName.Equals(ownerLastName))
                 {
                     return home;
                 }
